@@ -6,7 +6,7 @@
 /*   By: shinckel <shinckel@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:50:23 by shinckel          #+#    #+#             */
-/*   Updated: 2022/12/05 15:51:01 by shinckel         ###   ########.fr       */
+/*   Updated: 2023/01/09 19:58:42 by shinckel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,15 +122,25 @@ static void	ft_placeholder(char c, va_list args, int *len)
  * va_start(access variadic function arguments), va_arg(access the next arg)...; 
  * va_copy(makes a copy), va_end(ends traversal of the function arg);
  * va_list holds the information needed by va_start, va_arg, va_copy, va_end;
- * (18)...therefore, you must define it!
- * (20)sets a pointer(call stack) where variables were stored, starting the list;
+ * va_list is a structure... using pointers for accessing values in stack;
+ * (52)...therefore, you must create it!
+ * (54)sets a pointer(call stack) where variables were stored, starting the list;
  * va_arg will pull the arguments one by one, in the order they are listed...;
  * ...va_arg syntax= va_arg(va_list, datatype), e.g.datatype could be 'int';
  * each va_arg invocation modifies va_list to point the next variable argument;
  * 
- * state machine
- * 
  * 0xFF= '0x' prefix just marks the literal as hexadecimal in C(doesn't count);
+ * 
+ * printf must return the quantity of printable characters(len)...;
+ * this is a variable that works aside of fmt index 'i'(as ellipsis is unknown);
+ * therefore, you must create a pointer for collecting the size of each va_arg;
+ * 
+ * for solving printf succinctly, you can create two generic functions...;
+ * ...one when working with char and strings(ft_putstr)...;
+ * ...and other for numbers(ft_nbr)...;
+ * for the last one, solve the negatives inside ft_placeholder and...;
+ * ...work only with positives. In the case of pointers, add a flag(ox);
+ * ...for treating them differently! :)
  * 
  */
 
